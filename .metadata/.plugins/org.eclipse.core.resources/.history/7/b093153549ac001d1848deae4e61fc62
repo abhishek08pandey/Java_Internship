@@ -1,0 +1,12 @@
+package com.rivetbank.User;
+
+public class User {
+
+	private int id;
+	private String name;
+	private long mobileNumber;
+	private String city;
+	private int age;
+	private double salary;
+	
+}

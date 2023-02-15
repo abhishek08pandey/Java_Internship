@@ -1,0 +1,11 @@
+package com.rivetbank.service;
+
+
+public interface Service {
+
+	public void createDBConnection();
+	public void createAccount();
+	public void accountDetails(User getOneId);
+	public void allAccountDetails();
+	
+}

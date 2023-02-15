@@ -1,0 +1,13 @@
+package com.rivetbank.controller;
+
+import com.rivetbank.service;
+
+public class SwitchController {
+
+	static Service service = new ServiceImpl();
+	public static void main(String[] args) {
+		
+
+	}
+
+}

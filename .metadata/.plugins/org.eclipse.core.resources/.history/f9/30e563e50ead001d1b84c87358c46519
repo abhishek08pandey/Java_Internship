@@ -1,0 +1,10 @@
+package com.bankapp.controller;
+
+public class SwitchController {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

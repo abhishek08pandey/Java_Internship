@@ -1,0 +1,24 @@
+package com.rivetbank.controller;
+
+import java.util.Scanner;
+
+import com.rivetbank.service.Service;
+import com.rivetbank.service.ServiceImpl;
+
+public class SwitchController {
+
+	static Service service = new ServiceImpl();
+	
+	public static void main(String[] args) {
+		mainMenu();
+	}
+	public static void mainMenu() {
+		try {
+			Scanner scan = new Scanner(System.in);
+			System.out.println("*******************************************");
+			System.out.println(
+					"Mode:\n Create Account 1\n Person Account Details 2 \n All Account Details 3\n Update Account 4\n Delete Amount 5 \n Exit press: 6");
+			String selectedMode = scan.next();
+	}
+	}
+}

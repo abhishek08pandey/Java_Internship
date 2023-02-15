@@ -1,0 +1,5 @@
+package com.rivetbank.User;
+
+public class UserBankDetails {
+
+}

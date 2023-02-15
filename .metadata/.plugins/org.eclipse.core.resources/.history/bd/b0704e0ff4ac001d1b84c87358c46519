@@ -1,0 +1,12 @@
+package com.rivetbank.service;
+
+import com.rivetbank.User.User;
+
+public interface Service {
+
+	public void createDBConnection();
+	public void createAccount();
+	public void accountDetails(User getOneId);
+	public void allAccountDetails();
+	
+}
