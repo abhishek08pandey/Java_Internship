@@ -1,9 +1,12 @@
 package com.rivetbank.service;
 
+import java.sql.Connection;
 
 public interface Service {
 
-	public void createDBConnection();
+	public Connection createDBConnection();
+	
+	public boolean adminLogIn();
 
 	public void createAccount();
 

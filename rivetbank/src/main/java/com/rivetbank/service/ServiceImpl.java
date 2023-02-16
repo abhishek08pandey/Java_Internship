@@ -13,20 +13,52 @@ import java.sql.Connection;
 public class ServiceImpl implements Service {
 
 	static User user;
-	static Connection connection;
+	static Connection connection = null;
 	static Statement statement;
 
 	@Override
-	public void createDBConnection() {
-		try {
-			connection = DriverManager.getConnection(
+	public Connection createDBConnection() {// encrypt=true;trustServerCertificate=true;
+		try { // encrypt=false;trustServerCertificate=true/false; connected
+			connection = DriverManager.getConnection(// check SSL/TLS by JVM
 					"jdbc:sqlserver://localhost:1433;database=rivetbank;encrypt=true;trustServerCertificate=true;",
 					"sa", "Admin@123");
 			statement = connection.createStatement();
-
+			return connection;
 		} catch (SQLException e) {
-			System.out.println("Connection not created");
+
+			System.out.println("Database Connection not found");
 		}
+		return connection;
+	}
+
+	@Override
+	public boolean adminLogIn() {
+		try {
+			Scanner verifyAdmin = new Scanner(System.in);
+
+			System.out.println("Enter UserId: ");
+			String userId = verifyAdmin.next();
+			System.out.println("Enter Password: ");
+			String password = verifyAdmin.next();
+
+			ResultSet verifyIdPassword = statement.executeQuery("SELECT * FROM rivetBankAdmin ");
+
+			while (verifyIdPassword.next()) {
+				if (verifyIdPassword.getString(1).equalsIgnoreCase(userId)
+						&& verifyIdPassword.getString(2).equalsIgnoreCase(password)) {
+					return true;
+				} else {
+					throw new SQLException();
+					// System.out.println("Enter valid UserId and Password");
+					// adminLogIn();
+				}
+			}
+		} catch (SQLException e) {
+			System.out.println("Enter valid UserId and Password");
+
+			return adminLogIn();
+		}
+		return false;
 	}
 
 	@Override
@@ -46,11 +78,24 @@ public class ServiceImpl implements Service {
 			System.out.println("Enter City: ");
 			String city = insertedData.next();
 
+			System.out.println("Enter Account type: ");
+			String accountType = insertedData.next();
+
+			System.out.println("Enter Account Number: ");
+			long accountNumber = insertedData.nextLong();
+
+			System.out.println("Enter Balance");
+			double balance = insertedData.nextDouble();
+
 			System.out.println("Enter age: ");
 			int age = insertedData.nextInt();
 
-			statement.executeUpdate("insert into users values('" + id + "', '" + name + "', '" + mobileNumber + "', '"
-					+ city + "', '" + age + "')");
+			System.out.println("Enter Gender M/F");
+			String gender = insertedData.next();
+
+			statement.executeUpdate("insert into customer values('" + id + "', '" + name + "', '" + mobileNumber
+					+ "', '" + city + "', '" + accountType + "', '" + accountNumber + "', '" + balance + "' , '" + age
+					+ "', '" + gender + "')");
 
 			System.out.println("*******************************************");
 			System.out.println(name + " 💆 Acoount created successfully");
@@ -63,7 +108,13 @@ public class ServiceImpl implements Service {
 		} catch (SQLException e) {
 			System.out.println("\nSQLException!!!");
 			System.out.println("\nPlease enter unique id!!!");
-			createAccount();
+			e.printStackTrace();
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				System.out.println("Through Finally Block");
+			}
 		}
 
 	}
@@ -71,31 +122,46 @@ public class ServiceImpl implements Service {
 	@Override
 	public void accountDetails(int getOneId) {
 		try {
-			ResultSet user = statement.executeQuery("SELECT * FROM users WHERE id='" + getOneId + "' ");
+			ResultSet user = statement.executeQuery("SELECT * FROM customer WHERE id='" + getOneId + "' ");
 			while (user.next()) {
 
 				System.out.println("User Id:" + user.getInt(1) + "  Name:" + user.getString(2) + "  Mobile Number:"
-						+ user.getLong(3) + "  City:" + user.getString(4) + "  Age:" + user.getInt(5));
+						+ user.getLong(3) + "  City:" + user.getString(4) + "  Account type:" + user.getString(5)
+						+ "  Account Number:" + user.getLong(6) + "  Balance:" + user.getDouble(7) + "  age:"
+						+ user.getInt(8) + "  Gender:" + user.getString(9));
 			}
 			connection.close();
 		} catch (SQLException e) {
 			System.out.println("Records not found");
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				System.out.println("Through Finally Block");
+			}
 		}
 	}
 
 	@Override
 	public void allAccountDetails() {
 		try {
-			ResultSet user = statement.executeQuery("SELECT * FROM users");
-			System.out.println("Id  Name  Mobile  City  Age");
+			ResultSet user = statement.executeQuery("SELECT * FROM customer");
+			System.out.println("Id  Name  Mobile  City  AccountType  Balance  Age  Gender");
 			while (user.next()) {
 
 				System.out.println(user.getInt(1) + "  " + user.getString(2) + "  " + user.getLong(3) + "  "
-						+ user.getString(4) + "  " + user.getInt(5));
+						+ user.getString(4) + "  " + user.getString(5) + "  " + user.getLong(6) + "  "
+						+ user.getDouble(7) + "  " + user.getInt(8) + "  " + user.getString(9));
 			}
 			connection.close();
 		} catch (SQLException e) {
 			System.out.println("Records not found");
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				System.out.println("Through Finally Block");
+			}
 		}
 	}
 
@@ -103,12 +169,13 @@ public class ServiceImpl implements Service {
 	public void updateAccount(int updateId) {
 		try {
 			// This Code will show existing details of that Id
-			ResultSet user = statement.executeQuery("SELECT * FROM users WHERE id='" + updateId + "' ");
+			ResultSet user = statement.executeQuery("SELECT * FROM customer WHERE id='" + updateId + "' ");
 			while (user.next()) {
 
 				System.out.println("Existing Details \nUser Id:" + user.getInt(1) + "  Name:" + user.getString(2)
-						+ "  Mobile Number:" + user.getLong(3) + "  City:" + user.getString(4) + "  Age:"
-						+ user.getInt(5));
+						+ "  Mobile Number:" + user.getLong(3) + "  City:" + user.getString(4) + "  Account type:"
+						+ user.getString(5) + "  Account Number:" + user.getLong(6) + "  Balance:" + user.getDouble(6)
+						+ "  age:" + user.getInt(7) + "  Gender:" + user.getString(8));
 			}
 			System.out.println("*******************************************");
 			// This code will update that User Id details
@@ -122,28 +189,37 @@ public class ServiceImpl implements Service {
 			System.out.println("Update City: ");
 			String city = updateRecord.next();
 
-			System.out.println("Update age: ");
-			int age = updateRecord.nextInt();
+			statement.executeUpdate("UPDATE customer SET name='" + name + "', mobileNumber='" + mobileNumber
+					+ "', city='" + city + " where id=" + updateId);
 
-			statement.executeUpdate("UPDATE users SET name='" + name + "', mobileNumber='" + mobileNumber + "', city='"
-					+ city + "', age='" + age + "' where id=" + updateId);
 			System.out.println("Id Number:" + updateId + ",  Name:" + name + " details update");
-
+			connection.close();
 		} catch (Exception e) {
 			System.out.println("User Id does not exist please select correct Id !");
-			System.out.println();
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				System.out.println("Through Finally Block");
+			}
 		}
 	}
 
 	@Override
 	public void deleteAccountById(int deleteId) {
 		try {
-			statement.executeUpdate("DELETE users WHERE id='" + deleteId + "' ");
+			statement.executeUpdate("DELETE customer WHERE id='" + deleteId + "' ");
 			System.out.println("Your Id Number: " + deleteId + " deleted");
 			connection.close();
 		} catch (SQLException e) {
 			System.out.println("Your Id is not in Database!!!");
 			e.printStackTrace();
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				System.out.println("Through Finally Block");
+			}
 		}
 
 	}
