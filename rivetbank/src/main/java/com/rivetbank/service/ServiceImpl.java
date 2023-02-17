@@ -36,9 +36,9 @@ public class ServiceImpl implements Service {
 		try {
 			Scanner verifyAdmin = new Scanner(System.in);
 			System.out.println("WELCOME TO ADMIN LOGIN");
-			System.out.println("Enter Admin Username: ");
+			System.out.println("\nEnter Admin Username: ");
 			String userId = verifyAdmin.next();
-			System.out.println("Enter Password: ");
+			System.out.println("\nEnter Password: ");
 			String password = verifyAdmin.next();
 
 			ResultSet verifyIdPassword = statement.executeQuery("SELECT * FROM rivetBankAdmin ");
@@ -119,23 +119,29 @@ public class ServiceImpl implements Service {
 	}
 
 	@Override
-	public void accountDetails(int getOneId) {
+	public void accountDetails() {
 		try {
+			Scanner id = new Scanner(System.in);
+			System.out.println("Enter Id: ");
+			int getOneId = id.nextInt();
+
 			ResultSet user = statement.executeQuery("SELECT * FROM customer WHERE id='" + getOneId + "' ");
 			while (user.next()) {
 
-				System.out.println("User Id:" + user.getInt(1) + "  Name:" + user.getString(2) + "  Mobile Number:"
+				System.out.println("\nUser Id:" + user.getInt(1) + "  Name:" + user.getString(2) + "  Mobile Number:"
 						+ user.getLong(3) + "  City:" + user.getString(4) + "  Account type:" + user.getString(5)
 						+ "  Account Number:" + user.getLong(6) + "  Balance:" + user.getDouble(7) + "  age:"
 						+ user.getInt(8) + "  Gender:" + user.getString(9));
 			}
 			connection.close();
 		} catch (SQLException e) {
+			e.printStackTrace();
 			System.out.println("Records not found");
 		} finally {
 			try {
 				connection.close();
 			} catch (SQLException e) {
+				e.printStackTrace();
 				System.out.println("Through Finally Block");
 			}
 		}
@@ -165,19 +171,23 @@ public class ServiceImpl implements Service {
 	}
 
 	@Override
-	public void updateAccount(int updateId) {
+	public void updateAccount() {
 		try {
-			// This Code will show existing details of that Id
+			System.out.println("Enter Id: ");
+			Scanner getOneId = new Scanner(System.in);
+			int updateId = getOneId.nextInt();
+
+// This Code will show existing details of that Id
 			ResultSet user = statement.executeQuery("SELECT * FROM customer WHERE id='" + updateId + "' ");
 			while (user.next()) {
 
 				System.out.println("Existing Details \nUser Id:" + user.getInt(1) + "  Name:" + user.getString(2)
 						+ "  Mobile Number:" + user.getLong(3) + "  City:" + user.getString(4) + "  Account type:"
-						+ user.getString(5) + "  Account Number:" + user.getLong(6) + "  Balance:" + user.getDouble(6)
-						+ "  age:" + user.getInt(7) + "  Gender:" + user.getString(8));
+						+ user.getString(5) + "  Account Number:" + user.getLong(6) + "  Balance:" + user.getDouble(7)
+						+ "  age:" + user.getInt(8) + "  Gender:" + user.getString(9));
 			}
 			System.out.println("*******************************************");
-			// This code will update that User Id details
+// This code will update that User Id details
 			Scanner updateRecord = new Scanner(System.in);
 			System.out.println("Update Name: ");
 			String name = updateRecord.next();
@@ -205,11 +215,16 @@ public class ServiceImpl implements Service {
 	}
 
 	@Override
-	public void deleteAccountById(int deleteId) {
+	public void deleteAccountById() {
 		try {
-			statement.executeUpdate("DELETE customer WHERE id='" + deleteId + "' ");
-			System.out.println("Your Id Number: " + deleteId + " deleted");
+			System.out.println("Enter Id: ");
+			Scanner getOneId = new Scanner(System.in);
+			int deleteId = getOneId.nextInt();
+
+			int isUpdated = statement.executeUpdate("DELETE customer WHERE id='" + deleteId + "' ");
+			System.out.println("\nYour Id Number: " + deleteId + " deleted");
 			connection.close();
+
 		} catch (SQLException e) {
 			System.out.println("Your Id is not in Database!!!");
 			e.printStackTrace();

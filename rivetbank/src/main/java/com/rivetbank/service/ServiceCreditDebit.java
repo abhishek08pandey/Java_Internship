@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ServiceCreditDebit {
@@ -15,11 +16,12 @@ public class ServiceCreditDebit {
 	static Statement statement;
 	static Service service = new ServiceImpl();
 	static Controller controller;
+	static Connection connection;
 
-	public void creditAmount() {
+	public void creditAmount() throws SQLException {
 		double balance = 0;
 		try {
-			Connection connection = service.createDBConnection();
+			connection = service.createDBConnection();
 			statement = connection.createStatement();
 
 			Scanner input = new Scanner(System.in);
@@ -36,7 +38,6 @@ public class ServiceCreditDebit {
 					System.out.println("\nCustomer Details before credit Amount \nUser Id:" + user.getInt(1) + "  Name:"
 							+ user.getString(2) + "  Account Number:" + user.getLong(6) + "  Balance:"
 							+ user.getDouble(7));
-
 					balance = amount + user.getDouble(7);
 				}
 			} else {
@@ -45,7 +46,17 @@ public class ServiceCreditDebit {
 			}
 			System.out.println("*******************************************");
 // 	Enter credit amount		
-			statement.executeUpdate("UPDATE customer SET balance='" + balance + "' where id='" + id + "' ");
+			int isUpdated = statement.executeUpdate("UPDATE customer SET balance='" + balance + "' where id='" + id + "' ");
+			
+			if(isUpdated !=0) {
+				System.out.println("\nAmount succesfully credited: " + amount);
+				System.out.println("*******************************************");
+			}
+			else{
+				System.out.println("Enter valid id!!!");
+				creditAmount();
+			}
+			
 // Check balance After credit Amount
 			ResultSet getBalanceUpdate = statement.executeQuery("SELECT * FROM customer WHERE id='" + id + "' ");
 			while (getBalanceUpdate.next()) {
@@ -54,23 +65,29 @@ public class ServiceCreditDebit {
 						+ "  Name:" + getBalanceUpdate.getString(2) + "  Account Number:" + getBalanceUpdate.getLong(6)
 						+ "  Balance:" + getBalanceUpdate.getDouble(7));
 			}
-			System.out.println("\nAmount succesfully credited: " + amount);
-			System.out.println("*******************************************");
 // Again call Main Menu				
 			controller.mainMenu();
 			connection.close();
 
+		} catch (InputMismatchException input) {
+			// input.printStackTrace();
+			connection.close();
+			System.out.println("\nEnter valid Details ! by InputMismatchException");
+			creditAmount();
+
 		} catch (SQLException e) {
-			System.out.println("\nEnter valid amount ! ");
+			connection.close();
+			e.printStackTrace();
+			System.out.println("\nEnter valid Details SQL! ");
 			creditAmount();
 		}
 	}
 
-	public void debitAmount() {
+	public void debitAmount() throws SQLException {
 
 		double balance = 0;
 		try {
-			Connection connection = service.createDBConnection();
+			connection = service.createDBConnection();
 			statement = connection.createStatement();
 
 			Scanner input = new Scanner(System.in);
@@ -85,11 +102,11 @@ public class ServiceCreditDebit {
 				ResultSet user = statement.executeQuery("SELECT * FROM customer WHERE id='" + id + "' ");
 				while (user.next()) {
 
-					System.out.println("\nCustomer Details before Withdraw Amount \nUser Id:" + user.getInt(1)
+					System.out.println("\nCustomer Details before Withdraw Amount \n \nUser Id:" + user.getInt(1)
 							+ "  Name:" + user.getString(2) + "  Account Number:" + user.getLong(6) + "  Balance:"
 							+ user.getDouble(7));
 					if (user.getDouble(7) < amount) {
-						System.out.println("Insufficient Balance !");
+						System.out.println("\nInsufficient Balance !");
 						controller.mainMenu();
 					} else {
 						balance = user.getDouble(7) - amount;
@@ -101,7 +118,14 @@ public class ServiceCreditDebit {
 			}
 			System.out.println("*******************************************");
 // 	Enter credit amount		
-			statement.executeUpdate("UPDATE customer SET balance='" + balance + "' where id='" + id + "' ");
+			int isUpdated = statement.executeUpdate("UPDATE customer SET balance='" + balance + "' where id='" + id + "' ");
+			if(isUpdated !=0) {
+				System.out.println("\nAmount succesfully withdraw: " + amount);
+				System.out.println("*******************************************");
+			}
+			else{
+				System.out.println("Enter valid id!!!");
+			}
 // Check balance After credit Amount
 			ResultSet getBalanceUpdate = statement.executeQuery("SELECT * FROM customer WHERE id='" + id + "' ");
 			while (getBalanceUpdate.next()) {
@@ -110,12 +134,11 @@ public class ServiceCreditDebit {
 						+ "  Name:" + getBalanceUpdate.getString(2) + "  Account Number:" + getBalanceUpdate.getLong(6)
 						+ "  Balance:" + getBalanceUpdate.getDouble(7));
 			}
-			System.out.println("\nAmount succesfully credited: " + amount);
-			System.out.println("*******************************************");
 // Again call Main Menu			
 			controller.mainMenu();
 			connection.close();
 		} catch (SQLException e) {
+			connection.close();
 			System.out.println("\nEnter valid amount ! ");
 			creditAmount();
 		}

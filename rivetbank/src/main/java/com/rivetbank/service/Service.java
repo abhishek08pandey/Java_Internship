@@ -10,12 +10,12 @@ public interface Service {
 
 	public void createAccount();
 
-	public void accountDetails(int id);
+	public void accountDetails();
 
 	public void allAccountDetails();
 
-	public void updateAccount(int updateRecord);
+	public void updateAccount();
 
-	public void deleteAccountById(int deleteId);
+	public void deleteAccountById();
 
 }

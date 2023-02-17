@@ -36,7 +36,7 @@ public class SwitchController {
 				Scanner id = new Scanner(System.in);
 				int getOneId = id.nextInt();
 
-				service.accountDetails(getOneId);// Read One Record
+				//service.accountDetails(getOneId);// Read One Record
 				mainMenu();
 				break;
 
@@ -53,7 +53,7 @@ public class SwitchController {
 				Scanner updateOneId = new Scanner(System.in);
 				int updateId = updateOneId.nextInt(); // Update One Record
 
-				service.updateAccount(updateId);
+				//service.updateAccount(updateId);
 				mainMenu();
 				break;
 
@@ -64,7 +64,7 @@ public class SwitchController {
 				Scanner deleteOneId = new Scanner(System.in);
 				int deleteId = deleteOneId.nextInt();
 
-				service.deleteAccountById(deleteId); // Delete One Record
+				//service.deleteAccountById(deleteId); // Delete One Record
 				mainMenu();
 				break;
 

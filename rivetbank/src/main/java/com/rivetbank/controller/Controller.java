@@ -1,6 +1,7 @@
 package com.rivetbank.controller;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Scanner;
 import com.rivetbank.service.Service;
 import com.rivetbank.service.ServiceCreditDebit;
@@ -11,7 +12,7 @@ public class Controller {
 	static Service service = new ServiceImpl();
 	static ServiceCreditDebit serviceCreditDebit = new ServiceCreditDebit();
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		Connection connection = service.createDBConnection();// Login feature
 		if (connection != null) {
 			boolean adminLogIn = service.adminLogIn();
@@ -21,10 +22,10 @@ public class Controller {
 		}else {
 			System.out.println("Database Connection not found");
 		}
-		mainMenu();
+		// mainMenu();
 	}
 
-	public static void mainMenu() {
+	public static void mainMenu() throws SQLException {
 		try {
 			Scanner scan = new Scanner(System.in);
 			System.out.println("*******************************************");
@@ -40,38 +41,27 @@ public class Controller {
 				service.createDBConnection();
 				service.createAccount();
 				mainMenu();
-			} else if (selectedMode.contentEquals("2")) {// Read
+			} else if (selectedMode.contentEquals("2")) {// Read one person data
 				service.createDBConnection();
-
-				System.out.println("Enter Id: ");
-				Scanner id = new Scanner(System.in);
-				int getOneId = id.nextInt();
-
-				service.accountDetails(getOneId);
+				service.accountDetails();
 				mainMenu();
-			} else if (selectedMode.contentEquals("3")) {// Read all
+			}
+			else if (selectedMode.contentEquals("3")) {// Read all
 				service.createDBConnection();
 				service.allAccountDetails();
 				mainMenu();
-			} else if (selectedMode.contentEquals("4")) {// Update
+			}
+			else if (selectedMode.contentEquals("4")) {// Update
 				service.createDBConnection();
-
-				System.out.println("Enter Id: ");
-				Scanner getOneId = new Scanner(System.in);
-				int updateId = getOneId.nextInt();
-
-				service.updateAccount(updateId);
+				service.updateAccount();
 				mainMenu();
-			} else if (selectedMode.contentEquals("5")) {// Delete
+			}
+			else if (selectedMode.contentEquals("5")) {// Delete
 				service.createDBConnection();
-
-				System.out.println("Enter Id: ");
-				Scanner getOneId = new Scanner(System.in);
-				int deleteId = getOneId.nextInt();
-
-				service.deleteAccountById(deleteId);
+				service.deleteAccountById();
 				mainMenu();
-			} else if (selectedMode.contentEquals("6")) {// LogOut
+			}
+			else if (selectedMode.contentEquals("6")) {// LogOut
 				if (service.adminLogIn()) {
 					mainMenu();
 				}
@@ -81,7 +71,7 @@ public class Controller {
 			else if (selectedMode.contentEquals("8")) {// Withdraw
 				serviceCreditDebit.debitAmount();
 			}
-			else if (selectedMode.contentEquals("9")) {
+			else if (selectedMode.contentEquals("9")) {// Exit
 				System.out.println("Thanks 🙏 for Using Rivet Bank application");
 			} else {
 				System.out.println("Choose correct Mode: ");
