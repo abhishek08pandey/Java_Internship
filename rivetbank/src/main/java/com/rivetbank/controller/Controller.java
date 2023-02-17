@@ -12,15 +12,15 @@ public class Controller {
 	static ServiceCreditDebit serviceCreditDebit = new ServiceCreditDebit();
 
 	public static void main(String[] args) {
-//		Connection connection = service.createDBConnection();// Login feature
-//		if (connection != null) {
-//			boolean adminLogIn = service.adminLogIn();
-//			if (adminLogIn) {
-//				mainMenu();
-//			}
-//		}else {
-//			System.out.println("Database Connection not found");
-//		}
+		Connection connection = service.createDBConnection();// Login feature
+		if (connection != null) {
+			boolean adminLogIn = service.adminLogIn();
+			if (adminLogIn) {
+				mainMenu();
+			}
+		}else {
+			System.out.println("Database Connection not found");
+		}
 		mainMenu();
 	}
 
@@ -29,9 +29,9 @@ public class Controller {
 			Scanner scan = new Scanner(System.in);
 			System.out.println("*******************************************");
 			System.out.println(
-					"Mode:\n Create Account 1\n Person Account Details 2 "
-					+ "\n All Account Details 3\n Update Account 4\n Delete Amount"
-					+ " 5 \n LogOut 6 \nExit press: 7");
+					"Mode:\n Create Account: 1\n Person Account Details: 2 "
+					+ "\n All Account Details: 3\n Update Account: 4\n Delete Account: "
+					+ " 5 \n LogOut: 6 \n Credit Amount: 7 \n Withdraw amount: 8 \n Exit press: 9");
 			System.out.println("*******************************************");
 			String selectedMode = scan.next();
 			System.out.println("*******************************************");

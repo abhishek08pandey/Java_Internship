@@ -35,8 +35,8 @@ public class ServiceImpl implements Service {
 	public boolean adminLogIn() {
 		try {
 			Scanner verifyAdmin = new Scanner(System.in);
-
-			System.out.println("Enter UserId: ");
+			System.out.println("WELCOME TO ADMIN LOGIN");
+			System.out.println("Enter Admin Username: ");
 			String userId = verifyAdmin.next();
 			System.out.println("Enter Password: ");
 			String password = verifyAdmin.next();
@@ -54,9 +54,9 @@ public class ServiceImpl implements Service {
 				}
 			}
 		} catch (SQLException e) {
-			System.out.println("Enter valid UserId and Password");
-
-			return adminLogIn();
+			System.out.println("Enter valid Username and Password");
+			boolean adminLogIn = adminLogIn();
+			return adminLogIn;
 		}
 		return false;
 	}
@@ -108,7 +108,6 @@ public class ServiceImpl implements Service {
 		} catch (SQLException e) {
 			System.out.println("\nSQLException!!!");
 			System.out.println("\nPlease enter unique id!!!");
-			e.printStackTrace();
 		} finally {
 			try {
 				connection.close();
@@ -190,7 +189,7 @@ public class ServiceImpl implements Service {
 			String city = updateRecord.next();
 
 			statement.executeUpdate("UPDATE customer SET name='" + name + "', mobileNumber='" + mobileNumber
-					+ "', city='" + city + " where id=" + updateId);
+					+ "', city='" + city + "'  where id=" + updateId);
 
 			System.out.println("Id Number:" + updateId + ",  Name:" + name + " details update");
 			connection.close();
