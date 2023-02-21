@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 
 import com.rivetbank.User.User;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Connection;
@@ -22,7 +23,9 @@ public class ServiceImpl implements Service {
 			connection = DriverManager.getConnection(// check SSL/TLS by JVM
 					"jdbc:sqlserver://localhost:1433;database=rivetbank;encrypt=true;trustServerCertificate=true;",
 					"sa", "Admin@123");
+			//System.out.println(connection);
 			statement = connection.createStatement();
+			//System.out.println(statement);
 			return connection;
 		} catch (SQLException e) {
 
@@ -89,13 +92,48 @@ public class ServiceImpl implements Service {
 
 			System.out.println("Enter age: ");
 			int age = insertedData.nextInt();
-
+			
+			insertedData.nextLine();
+			
 			System.out.println("Enter Gender M/F");
-			String gender = insertedData.next();
-
-			statement.executeUpdate("insert into customer values('" + id + "', '" + name + "', '" + mobileNumber
-					+ "', '" + city + "', '" + accountType + "', '" + accountNumber + "', '" + balance + "' , '" + age
-					+ "', '" + gender + "')");
+	        String gender = insertedData.nextLine();
+	        
+	        connection.setAutoCommit(false);
+	        
+	        PreparedStatement statement = connection.prepareStatement("INSERT INTO customer values(?,?,?,?,?,?,?,?,?)");
+			
+//	        String string = "insert into customer values('" + id + "', '" + name + "', '" + mobileNumber
+//					+ "', '" + city + "', l'" + accountType + "', '" + accountNumber + "', '" + balance + "' , '" + age
+//					+ "', '" + gender + "')";
+//			
+			//System.out.println(string);
+			//statement.executeUpdate(string);
+			
+	        statement.setInt(1, id);
+	        statement.setString(2, name);
+	        statement.setLong(3, mobileNumber);
+	        statement.setString(4, city);
+	        statement.setString(5, accountType);
+	        statement.setLong(6, accountNumber);
+	        statement.setDouble(7, balance);
+	        statement.setInt(8, age);
+	        statement.setString(9, gender);
+	        
+	        int executeUpdate = statement.executeUpdate();
+	        
+	        System.out.println("Commit ? Y/N:  ");
+	        String commit = insertedData.next();
+	        
+//	        System.out.println("Rollback ? Y/N: ");
+//	        String rollback = insertedData.next();
+	        
+	        if(commit.equalsIgnoreCase("y")) {
+	        	connection.commit();
+	        }else {
+	        	connection.rollback();
+	        }
+	        
+	        System.out.println(executeUpdate);
 
 			System.out.println("*******************************************");
 			System.out.println(name + " 💆 Acoount created successfully");
@@ -106,6 +144,7 @@ public class ServiceImpl implements Service {
 			System.out.println("\nWrong input !!!");
 			createAccount();
 		} catch (SQLException e) {
+			e.printStackTrace();
 			System.out.println("\nSQLException!!!");
 			System.out.println("\nPlease enter unique id!!!");
 		} finally {
@@ -198,6 +237,7 @@ public class ServiceImpl implements Service {
 			System.out.println("Update City: ");
 			String city = updateRecord.next();
 
+			//connection.prepareStatement("UPDATE customer SET name=?, mobileNumber=?, city=? where id=? ");
 			statement.executeUpdate("UPDATE customer SET name='" + name + "', mobileNumber='" + mobileNumber
 					+ "', city='" + city + "'  where id=" + updateId);
 
@@ -213,6 +253,7 @@ public class ServiceImpl implements Service {
 			}
 		}
 	}
+
 
 	@Override
 	public void deleteAccountById() {
