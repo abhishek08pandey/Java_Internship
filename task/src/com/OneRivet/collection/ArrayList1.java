@@ -5,24 +5,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Deque;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.PriorityQueue;
 import java.util.Queue;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.Vector;
 
 class User {
 	int id;
 	 String name;
-	String city;
+	String city;    
 
-	User(int id, String name, String city) {
+	User(int id, String name, String city) {// Collections.sort we can use only in List implementation 
 		this.id = id;
 		this.name = name;
 		this.city = city;
@@ -82,7 +75,7 @@ public class ArrayList1 {
 		al.add(u1);
 		al.add(u2);
 		
-		System.out.println("let seee ");
+		System.out.println("let seee "+al);
 		Iterator iterator = al.iterator();
 		//System.out.println(iterator.next());
 		//System.out.println(iterator.next());
@@ -118,7 +111,7 @@ public class ArrayList1 {
 		System.out.println(al);
 		
 		boolean empty = al.isEmpty();
-		System.out.println(empty);
+		System.out.println("is empty: "+empty);
 		
 	
 		
@@ -151,8 +144,7 @@ public class ArrayList1 {
 		a.add(10);
 		
 		a.add(5);
-		 //a.add("bhs");//that should be homogenious
-		//Collections.sort(a);
+		 a.add("bhs");//that should be homogenious
 		System.out.println(a);
 	}
 

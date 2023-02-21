@@ -1,0 +1,38 @@
+package com.OneRivet.task;
+
+import java.util.Scanner;
+
+public class PrimeNumber {
+
+	public static void main(String[] args) {
+		int stop = 0;
+		int firstNum;
+		int lastNum;
+
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter Fist number");
+		firstNum = scan.nextInt();
+		System.out.println("Enter Last number");
+		lastNum = scan.nextInt();
+
+		for (int i = firstNum; i <= lastNum; i++) {
+
+			if (i == 0 || i == 1) {
+				System.out.println(firstNum + " :is not Prime Number");
+			} else {
+				primeNumber(firstNum, lastNum);
+			}
+		}
+	}
+	
+	public static void primeNumber(int firstNum, int LastNum) {
+		for (int j = firstNum; j < firstNum/2; j++) {
+
+			if (firstNum % j == 0) {
+				System.out.println(firstNum + " :is not Prime Number");
+			} else {
+				System.out.println(firstNum + " :is Prime Number");
+			}
+		}
+	}
+}

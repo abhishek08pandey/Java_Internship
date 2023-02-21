@@ -27,7 +27,7 @@ class Call {
 		}
 		if (p instanceof B) {// If it is B
 			B b = (B) p;// Downcasting:- ref is class B and obj is p
-			System.out.println("ref b address:- " + b);
+			System.out.println("ref b address:- " + b);//B@e580929
 			b.b();
 		}
 	}
@@ -41,7 +41,7 @@ public class ClassUpCasting {
 
 	public static void main(String[] args) {
 
-		Printable p = new B();// UpCasting
+		Printable p = new B();// ClassUpCasting
 		System.out.println("ref p address:- " + p);
 		Call c = new Call();
 		System.out.println("ref c address:- " + c);

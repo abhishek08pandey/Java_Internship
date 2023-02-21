@@ -1,0 +1,21 @@
+package com.rivetbank.service;
+
+import java.sql.ResultSet;
+
+public interface Service {
+
+	public void createDBConnection();
+	
+	public ResultSet adminLogIn();
+
+	public void createAccount();
+
+	public void accountDetails(int id);
+
+	public void allAccountDetails();
+
+	public void updateAccount(int updateRecord);
+
+	public void deleteAccountById(int deleteId);
+
+}

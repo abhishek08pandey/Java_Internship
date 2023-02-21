@@ -15,7 +15,7 @@ public class Array2D {
 
 		System.out.println(no);
 		System.out.println(no.length);// at a time we use nothing so we get only Raw
-		System.out.println(no[1].length); // at a time we use raw to get Column
+		System.out.println(no[1].length+" :go"); // at a time we use raw to get Column
 		//System.out.println(no[2].length); // it will give a exception because of 2 raw is not avilabel
 		
 		for (int i = 0; i < no.length; i++) {
@@ -26,9 +26,9 @@ public class Array2D {
 		
 		 char[] copyFrom = { 'd', 'e', 'c', 'a', 'f', 'f', 'e', 'i', 'n', 'a', 't', 'e', 'd' };  
 		 System.out.println("Indicate lenth of array: "+copyFrom.length);
-		  char[] copyTo = new char[9];  
+		  char[] copyTo = new char[9];
 		  //copying array using System.arraycopy() method  
-	        System.arraycopy(copyFrom, 2, copyTo, 0, 8);  
+	        System.arraycopy(copyFrom, 2, copyTo, 0, 8);
 	        //printing the destination array  
 	        System.out.println(String.valueOf(copyTo));  
 	        int arr[]={33,3,4,5};  

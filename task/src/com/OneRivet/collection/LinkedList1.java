@@ -40,13 +40,13 @@ public class LinkedList1 {
 		}
 		
 		UserLinkedList set = link.set(0, user3);//? can't solve
-		System.out.println(set.id + " " + set.principalName+" " + set.schoolName);
+		System.out.println("Set: "+set.id + " " + set.principalName+" " + set.schoolName);
 		
-		//UserLinkedList peek = link.peekLast();
-		//System.out.println(peek.id + " " + peek.principalName+" " + peek.schoolName);
+		UserLinkedList peek = link.peekLast();
+		System.out.println("Peek: "+peek.id + " " + peek.principalName+" " + peek.schoolName);
 		System.out.println(link);
 		UserLinkedList pop = link.pop();
-		System.out.println(link);
+		System.out.println("pop through top element remove : "+link);
 		System.out.println(pop);
 		System.out.println(link);
 	}

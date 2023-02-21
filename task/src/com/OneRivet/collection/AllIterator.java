@@ -20,15 +20,13 @@ public class AllIterator {
 		list.add("pple"); 
 		list.add("zoo");
 		System.out.println(list.size());
-		//Collections.sort(list);//it will print in ascending order
+		Collections.sort(list);//it will print in ascending order
+		
+		System.out.println("Ascending order: "+list);
 		Collections.sort(list, Collections.reverseOrder());//it will print reverse elements
+		System.out.println("Descending order: "+list);
 		
-		
-		System.out.println(list);
-		
-		System.out.println("List when we insert all elements: " +list+ "\n");
-		
-		System.out.println("1st way to iterate collection with use of Iterator Interface"+ "\n");
+		System.out.println("\n1st way to iterate collection with use of Iterator Interface"+ "\n");
 		
 		Iterator iterator = list.iterator();
 		while (iterator.hasNext()) {
@@ -47,7 +45,7 @@ public class AllIterator {
 			System.out.println(object);
 		}
 		
-		System.out.println("4th way to use forEach Method ");
+		System.out.println("\n4th way to use forEach Method ");
 		list.forEach(a->{System.out.println(a);});//lambda Expression
 
 		System.out.println("5th way to iterate by forEachremaining(); method"+ "\n");

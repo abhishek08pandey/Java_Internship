@@ -24,7 +24,7 @@ public class Array1
 			//System.out.println(x[i]);
 		}
 		
-		int []x1= {145,5,55,555};
+		int []x1= {145,2,5,55,555};
 		
 		
 		for (int i : x1) {
