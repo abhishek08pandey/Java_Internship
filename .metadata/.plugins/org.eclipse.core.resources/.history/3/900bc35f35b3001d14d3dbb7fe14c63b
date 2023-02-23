@@ -1,0 +1,13 @@
+package com.rivetbank.batchprocesser;
+
+import java.sql.DriverManager;
+
+public class BatchProcess {
+
+	public static void main(String[] args) {
+
+		DriverManager.getConnection();
+
+	}
+
+}

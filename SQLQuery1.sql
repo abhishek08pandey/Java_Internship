@@ -20,6 +20,11 @@ select * from customer;
 
 create table rivetBankAdmin(userId varchar(128) not null, password varchar(16) not null);
 
-insert into rivetbankadmin values('abhi@gmail.com', '123');
+insert into rivetbankadmin values('111', '111');
+
+delete from rivetbankadmin where userid ='111'
 select * from rivetbankadmin;
 SELECT * FROM customer WHERE id=3
+
+
+create table jdbc(id int, name varchar(16), city varchar(15));

@@ -2,6 +2,7 @@ package com.rivetbank.service;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
 import java.sql.ResultSet;
 
 import com.rivetbank.User.User;
@@ -24,7 +25,6 @@ public class ServiceImpl implements Service {
 					"jdbc:sqlserver://localhost:1433;database=rivetbank;encrypt=true;trustServerCertificate=true;",
 					"sa", "Admin@123");
 			//System.out.println(connection);
-			statement = connection.createStatement();
 			//System.out.println(statement);
 			return connection;
 		} catch (SQLException e) {
@@ -43,12 +43,18 @@ public class ServiceImpl implements Service {
 			String userId = verifyAdmin.next();
 			System.out.println("\nEnter Password: ");
 			String password = verifyAdmin.next();
-
-			ResultSet verifyIdPassword = statement.executeQuery("SELECT * FROM rivetBankAdmin ");
-
-			while (verifyIdPassword.next()) {
-				if (verifyIdPassword.getString(1).equalsIgnoreCase(userId)
-						&& verifyIdPassword.getString(2).equalsIgnoreCase(password)) {
+			
+			String sql = "SELECT * FROM rivetBankAdmin where userId=? ";
+			
+//			statement = connection.createStatement();
+//			ResultSet verifyUserIdPassword = statement.executeQuery(sql);
+			
+			PreparedStatement prepaireStatement = connection.prepareStatement(sql);
+			prepaireStatement.setString(1, userId);
+			ResultSet verifyUserIdPassword = prepaireStatement.executeQuery();
+			
+			while (verifyUserIdPassword.next()) { 
+				if (verifyUserIdPassword.getString(2).equalsIgnoreCase(password) && verifyUserIdPassword.getString(1).equalsIgnoreCase(userId)) {
 					return true;
 				} else {
 					throw new SQLException();

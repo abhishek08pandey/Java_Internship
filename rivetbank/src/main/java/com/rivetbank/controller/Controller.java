@@ -22,7 +22,7 @@ public class Controller {
 		}else {
 			System.out.println("Database Connection not found");
 		}
-		// mainMenu();
+		Controller.main(args);// Addd for multiple login
 	}
 
 	public static void mainMenu() throws SQLException {

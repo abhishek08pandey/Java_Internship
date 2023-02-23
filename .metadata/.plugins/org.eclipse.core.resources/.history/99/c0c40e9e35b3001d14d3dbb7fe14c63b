@@ -1,0 +1,14 @@
+package com.rivetbank.batchprocesser;
+
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class BatchProcess {
+
+	public static void main(String[] args) throws SQLException {
+
+		Connection con =DriverManager.getConnection("jdbc:sqlserver://localhost:1433;database=rivetbank;encrypt=true;trustservercertificate=ture", "sa", "Admin@123");
+
+	}
+
+}

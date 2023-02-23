@@ -1,5 +1,0 @@
-package com.rivetbank.service;
-
-public interface Service {
-
-}
