@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app>
+
+	<servlet>
+	<servlet-class>SecondGenericServlet</servlet-class>
+	<servlet-name>SecondGenericServlet</servlet-name>
+	</servlet>
+
+	<servlet-mapping>
+	<servlet-name>SecondGenericServlet</servlet-name>
+	<url-pattern>/SecondGenericServlet</url-pattern>
+	</servlet-mapping>
+
+</web-app>

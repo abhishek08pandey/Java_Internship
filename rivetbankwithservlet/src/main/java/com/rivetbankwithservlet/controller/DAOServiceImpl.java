@@ -116,14 +116,27 @@ public class DAOServiceImpl {
 
 	}
 // Get perticuler Id Details	
-	public static ResultSet idDetails(int id) {
+	public static User idDetails(int id) {
 		try {
+			User user = new User();
 		connection = DAOServiceImpl.dbConnection();
 		PreparedStatement prepareStatement = connection.prepareStatement("SELECT * FROM servletuser WHERE ID=?");
 
 		prepareStatement.setInt(1, id);
 		ResultSet idDetails = prepareStatement.executeQuery();
-		return idDetails;
+		
+		while(idDetails.next()) {
+			
+		user.setId(idDetails.getInt(1));
+		user.setName(idDetails.getString(2));
+		user.setEmail(idDetails.getString(3));
+		user.setCity(idDetails.getString(4));
+		user.setMobileNumber(idDetails.getLong(5));
+		
+		}
+		System.out.println("user.getId: "+user.getId());
+		
+		return user;
 		
 		}catch (Exception e) {
 			System.out.println("from delete method");

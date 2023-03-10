@@ -6,6 +6,7 @@ public class PrimeNumber {
 
 	public static void main(String[] args) {
 		int stop = 0;
+		
 		int firstNum;
 		int lastNum;
 

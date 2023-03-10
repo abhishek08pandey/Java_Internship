@@ -7,11 +7,17 @@
 <body>
 <table>
 	<tr><td><a href=login>Login</a></td></tr>
-	<tr><td><a href=listofrecords>List</a></td></tr>
+	<tr><td><a href=listofrecords target="_blank">List</a></td></tr>
 	<tr><td><a href=delete>Delete Record</a></td></tr>
-	<tr><td><a href=getidupdate>Update Record</a></td></tr>
-	<tr><td><a href=oneiddata>Details</a></td></tr>
+	<tr><td><a href=getidupdate target="_blank">Update Record</a></td></tr>
+	<tr><td><a href=oneiddata>Customer Details</a></td></tr>
+	<tr><td><a href="search" target="_blank">Search</a></td></tr>
 </table>
+
+	<form action="search" method="post">
+		
+		<input type="search" value="search">
+	</form>
 	<h1>Enter Customer Details</h1>
 	<form action="adduser" method="post">
 		<table>

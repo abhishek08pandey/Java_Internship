@@ -47,11 +47,12 @@ public class UpdateRecord extends HttpServlet {
 		String userId = request.getParameter("id");
 		int id = Integer.parseInt(userId);
 
-		ResultSet idDetails = DAOServiceImpl.idDetails(id);
+		User user = DAOServiceImpl.idDetails(id);
+		System.out.println(user.getId());
 		try {
 			response.setContentType("text/html");
 			PrintWriter print = response.getWriter();
-// Existing Records
+//we can change on Existing Records
 			print.println("<html>");
 			print.println("<head><title>Update</title></head>");
 			print.println("<body>");
@@ -60,55 +61,25 @@ public class UpdateRecord extends HttpServlet {
 			print.println("</form>");
 
 			print.println("<h2>Enter Update Details</h2>");
+			
+			print.println("<form action=update align=center>");
 			print.println("<table border=1 width=10% height=10%>");
-			print.println("<tr><th>Id</th><th>Name</th><th>Email</th><th>City</th><th>Contact Number</th><tr>");
+			print.println("<tr><th>Id</th><th>Name</th><th>Email</th><th>City</th><th>Contact Number</th></tr>");
 			
-			while (idDetails.next()) {
-
-				int idUser = idDetails.getInt(1);
-				String name = idDetails.getString(2);
-				String email = idDetails.getString(3);
-				String city = idDetails.getString(4);
-				long mobile = idDetails.getLong(5);
-			
-				print.println("<tr><td>" + idUser + "</td>");
-				print.println("<td>" + name + "</td>");
-				print.println("<td>" + email + "</td>");
-				print.println("<td>" + city + "</td>");
-				print.println("<td>" + mobile + "</td></tr>");
-				print.println("</form>");
-
-			}
+			print.println("<tr><td><input type=text name=userId value="+user.getId()+"></td>");
+			print.println("<td><input type=text name=name value="+user.getName()+"></td>");
+			print.println("<td><input type=text name=email value="+user.getEmail()+"></td>");
+			print.println("<td><input type=text name=city value="+user.getCity()+"></td>");
+			print.println("<td><input type=text name= mobile value="+user.getMobileNumber()+"></td>");
+			print.println("<td><input type=submit value=update></td></tr>");
 			print.println("</table>");
+			print.println("</form>");
 			print.println("</body>");
 			print.println("</html>");
-// Update form		
-				print.println("<html>");
-				print.println("<head><title>Update</title></head>");
-				print.println("<body>");
-				print.println("<h2>Enter Update Details</h2>");
-				print.println("<form action=update >");
-					print.println("<table border=1 width=10% height=10%>");
-					print.println("<tr><th>Id</th><th>Name</th><th>Email</th><th>City</th><th>Contact Number</th></tr>");
-					print.println("<td><input type=text name=userId></td>");
-					print.println("<td><input type=text name=name></td>");
-					print.println("<td><input type=text name=email></td>");
-					print.println("<td><input type=text name=city></td>");
-					print.println("<td><input type=text name=mobile></td>");
-					print.println("<td><input type=submit value=update></td></tr>");
-				print.println("</form>");
-				print.println("</table>");
-				print.println("</body>");
-				print.println("</html>");
-				
 
 		} catch (IOException e) {
 			System.out.println("from list");
 			e.printStackTrace();
-		} catch (SQLException e) {
-			System.out.println("from sql in update servlet");
-			e.printStackTrace();
 		}
-
 	}
 }

@@ -45,7 +45,7 @@ public class Update extends HttpServlet {
 			if (status > 0) {
 				print.println("Records Update");
 				RequestDispatcher rd = request.getRequestDispatcher("\\WEB-INF\\features\\create.html");
-				rd.forward(request, response);
+				rd.include(request, response);
 			} else {
 				print.println("Records not found for update");
 				RequestDispatcher rd = request.getRequestDispatcher("\\WEB-INF\\features\\create.html");

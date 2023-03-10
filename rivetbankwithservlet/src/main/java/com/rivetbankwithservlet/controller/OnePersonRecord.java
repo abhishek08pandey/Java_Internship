@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.rivetbankwithservlet.user.User;
+
 @WebServlet("/oneiddata")
 public class OnePersonRecord extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -42,7 +44,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	String userId = request.getParameter("id");
 	int id = Integer.parseInt(userId);
 
-	ResultSet idDetails = DAOServiceImpl.idDetails(id);
+	User idDetails = DAOServiceImpl.idDetails(id);
 	try {
 	response.setContentType("text/html");
 
@@ -55,28 +57,18 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	print.println("</form>");
 	print.println("<h2>Id Details</h2>");
 
-	print.println("<table border=1 width=10% height=10%>");
-	print.println("<tr><th>Id</th><th>Name</th><th>Email</th><th>City</th><th>Contact Number</th><tr>");
-	while (idDetails.next()) {
-		int idUser = idDetails.getInt(1);
-		String name = idDetails.getString(2);
-		String email = idDetails.getString(3);
-		String city = idDetails.getString(4);
-		long mobile = idDetails.getLong(5);
-
-		System.out.println(name + " " + mobile);
-		System.out.println(idDetails.getString(2));
-		
-		print.println("<tr><td>" + idUser + "</td>");
-		print.println("<td>" + name + "</td>");
-		print.println("<td>" + email + "</td>");
-		print.println("<td>" + city + "</td>");
-		print.println("<td>" + mobile + "</td></tr>");
-	}
+	print.println("<table border=1 width=10% height=10% aling=center>");
+	print.println("<tr><th>Id</th><th>Name</th><th>Email</th><th>City</th><th>Contact Number</th></tr>");
+		print.println("<tr><td>" + idDetails.getId() + "</td>");
+		print.println("<td>" + idDetails.getName() + "</td>");
+		print.println("<td>" + idDetails.getEmail() + "</td>");
+		print.println("<td>" + idDetails.getCity() + "</td>");
+		print.println("<td>" + idDetails.getMobileNumber() + "</td></tr>");
 	print.println("</table>");
 	print.println("</body>");
 	print.println("</html>");
-} catch (SQLException e) {
+	
+} catch (Exception e) {
 	System.out.println("from sql in update servlet");
 	e.printStackTrace();
 }
