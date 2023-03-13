@@ -28,12 +28,12 @@ public class UpdateRecord extends HttpServlet {
 		print.println("<head><title>Records</title></head>");
 		print.println("<body>");
 		print.println("<form action=adduser method=get>");
-		print.println("<pre><input type=submit value=MainMenu></pre>");
+		print.println("<pre><input type=submit value=Home></pre>");
 		print.println("</form>");
 		print.println("<h2>Enter Id for Update</h2>");
 // Enter Update id
 		print.println("<form action=getidupdate method=post>");
-		print.println("Id<input type=text name=id>");
+		print.println("Id<input type=text name=id required>");
 		print.println("<input type=submit name=delete>");
 		print.println("</form>");
 
@@ -57,7 +57,7 @@ public class UpdateRecord extends HttpServlet {
 			print.println("<head><title>Update</title></head>");
 			print.println("<body>");
 			print.println("<form action=adduser method=get>");
-			print.println("<pre><input type=submit value=MainMenu></pre>");
+			print.println("<pre><input type=submit value=Home></pre>");
 			print.println("</form>");
 
 			print.println("<h2>Enter Update Details</h2>");
@@ -66,11 +66,11 @@ public class UpdateRecord extends HttpServlet {
 			print.println("<table border=1 width=10% height=10%>");
 			print.println("<tr><th>Id</th><th>Name</th><th>Email</th><th>City</th><th>Contact Number</th></tr>");
 			
-			print.println("<tr><td><input type=text name=userId value="+user.getId()+"></td>");
-			print.println("<td><input type=text name=name value="+user.getName()+"></td>");
-			print.println("<td><input type=text name=email value="+user.getEmail()+"></td>");
-			print.println("<td><input type=text name=city value="+user.getCity()+"></td>");
-			print.println("<td><input type=text name= mobile value="+user.getMobileNumber()+"></td>");
+			print.println("<tr><td><input type=text name=userId value="+user.getId()+" readonly></td>");
+			print.println("<td><input type=text name=name value="+user.getName()+" required></td>");
+			print.println("<td><input type=text name=email value="+user.getEmail()+" required></td>");
+			print.println("<td><input type=text name=city value="+user.getCity()+" required></td>");
+			print.println("<td><input type=text name= mobile value="+user.getMobileNumber()+" required></td>");
 			print.println("<td><input type=submit value=update></td></tr>");
 			print.println("</table>");
 			print.println("</form>");

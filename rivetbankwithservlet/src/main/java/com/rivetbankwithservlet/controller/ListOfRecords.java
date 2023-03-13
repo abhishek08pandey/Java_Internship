@@ -30,7 +30,7 @@ public class ListOfRecords extends HttpServlet {
 			print.println("<head><title>Records</title></head>");
 			print.println("<body>");
 			print.println("<form action=adduser method=get>");
-			print.println("<pre><input type=submit value=MainMenu></pre>");
+			print.println("<pre><input type=submit value=Home></pre>");
 			print.println("</form>");
 			print.println("<h2>List Of Records</h2>");
 //Print table of List

@@ -68,6 +68,10 @@ create table servletuser(id int  PRIMARY KEY IDENTITY(1,1), name VARCHAR(48) not
 
 select * from servletuser;
 
+select * from jspusers;
+
+create table jspusers(id int  PRIMARY KEY IDENTITY(1,1), name VARCHAR(48) not null,email VARCHAR(48) not null,password VARCHAR(48));
+
 select * from rivetbankadmin;
 
 delete from rivetbankadmin where userid='123';

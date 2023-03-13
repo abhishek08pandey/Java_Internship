@@ -58,7 +58,7 @@ public class Update extends HttpServlet {
 			print.println("Wrong inputs !!!");
 			
 			print.println("<form action=adduser method=get>");
-			print.println("<pre><input type=submit value=MainMenu></pre>");
+			print.println("<pre><input type=submit value=Home></pre>");
 			print.println("</form>");
 			e.printStackTrace();
 		}

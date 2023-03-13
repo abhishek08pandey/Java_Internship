@@ -31,7 +31,7 @@ public class OnePersonRecord extends HttpServlet {
 		print.println("<h2>Enter Id</h2>");
 		
 		print.println("<form action=oneiddata method=post>");
-		print.println("Id<input type=text name=id>");
+		print.println("Id<input type=text name=id required >");
 		print.println("<input type=submit name=find>");
 		print.println("</form>");
 		
@@ -53,14 +53,14 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	print.println("<head><title>Record</title></head>");
 	print.println("<body>");
 	print.println("<form action=adduser method=get>");
-	print.println("<pre><input type=submit value=MainMenu></pre>");
+	print.println("<pre><input type=submit value=Home></pre>");
 	print.println("</form>");
 	print.println("<h2>Id Details</h2>");
 
 	print.println("<table border=1 width=10% height=10% aling=center>");
 	print.println("<tr><th>Id</th><th>Name</th><th>Email</th><th>City</th><th>Contact Number</th></tr>");
-		print.println("<tr><td>" + idDetails.getId() + "</td>");
-		print.println("<td>" + idDetails.getName() + "</td>");
+		print.println("<tr><td>" + idDetails.getId() + " </td>");
+		print.println("<td>" + idDetails.getName() + " </td>");
 		print.println("<td>" + idDetails.getEmail() + "</td>");
 		print.println("<td>" + idDetails.getCity() + "</td>");
 		print.println("<td>" + idDetails.getMobileNumber() + "</td></tr>");

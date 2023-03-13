@@ -25,11 +25,11 @@ public class DeleteRecord extends HttpServlet {
 		print.println("<head><title>Records</title></head>");
 		print.println("<body>");
 		print.println("<form action=adduser method=get>");
-		print.println("<pre><input type=submit value=MainMenu></pre>");
+		print.println("<pre><input type=submit value=Home></pre>");
 		print.println("</form>");
 		print.println("<h2>Enter Id</h2>");
 			print.println("<form action=delete method=post>");
-			print.println("Id<input type=text name=id>");
+			print.println("Id<input type=text name=id required >");
 			print.println("<input type=submit value=delete>");
 			print.println("</form>");
 		print.println("</body>");
