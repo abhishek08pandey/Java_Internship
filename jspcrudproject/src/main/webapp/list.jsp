@@ -10,7 +10,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<a href="getallrecords.jsp">Home</a>
 	<a href="create.jsp">Add User</a>
+	<a href="login.jsp">Logout</a>
 
 	<h1>Welcome in Admin</h1>
 	<table border=1 width=10% height=10%>
@@ -19,16 +21,20 @@
 			<th>Name</th>
 			<th>Email</th>
 			<th>Password</th>
+			<th>Update</th>
+			<th>Delete</th>
 		</tr>
 		<%
-		ResultSet list = (ResultSet) request.getAttribute("user");
+		ResultSet list = (ResultSet) request.getAttribute("list");
 		while (list.next()) {
 		%>
 		<tr>
-			<td><%=list.getInt(1)%>
+			<td><a href="getid.jsp?id=<%=list.getInt(1)%>"><%=list.getInt(1)%></a>
 			<td><%=list.getString(2)%></td>
 			<td><%=list.getString(3)%></td>
 			<td><%=list.getString(4)%></td>
+			<td><a href="getupdaterecords.jsp?id=<%= list.getInt(1)%>">Update</a>
+			<td><a href="deleteid.jsp?id=<%= list.getInt(1)%>">Delete</a>
 		</tr>
 		<%
 		}

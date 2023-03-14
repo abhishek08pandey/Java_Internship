@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<a href="getallrecords.jsp">Home</a>
+	<a href="create.jsp">Add User</a>
+	<a href="login.jsp">Logout</a>
 	
 	<h1 align="center">Enter Customer Details</h1>
 	<form action="adduser.jsp">

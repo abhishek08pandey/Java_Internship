@@ -10,4 +10,8 @@
     <fullyQualifiedTypeName name="com.rivetbankwithservlet.user.RivetBankAdmin"/>
     <fullyQualifiedTypeName name="com.rivetbankwithservlet.user.User"/>
     <fullyQualifiedTypeName name="java.sql.SQLException"/>
+    <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+    <fullyQualifiedTypeName name="com.rivetbankwithjsp.controller.DAOServiceImpl"/>
+    <fullyQualifiedTypeName name="com.jspcrudproject.user.RivetBankAdmin"/>
+    <fullyQualifiedTypeName name="com.jspcrudproject.user.User"/>
 </qualifiedTypeNameHistroy>
