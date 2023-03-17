@@ -14,4 +14,20 @@
     <fullyQualifiedTypeName name="com.rivetbankwithjsp.controller.DAOServiceImpl"/>
     <fullyQualifiedTypeName name="com.jspcrudproject.user.RivetBankAdmin"/>
     <fullyQualifiedTypeName name="com.jspcrudproject.user.User"/>
+    <fullyQualifiedTypeName name="org.hibernate.cfg.Configuration"/>
+    <fullyQualifiedTypeName name="org.hibernate.SessionFactory"/>
+    <fullyQualifiedTypeName name="com.firstmaven.firstmaven.App"/>
+    <fullyQualifiedTypeName name="com.firstmaven.entities.Student"/>
+    <fullyQualifiedTypeName name="org.hibernate.annotations.Entity"/>
+    <fullyQualifiedTypeName name="javax.persistence.Entity"/>
+    <fullyQualifiedTypeName name="javax.persistence.Id"/>
+    <fullyQualifiedTypeName name="javax.persistence.GeneratedValue"/>
+    <fullyQualifiedTypeName name="javax.persistence.GenerationType"/>
+    <fullyQualifiedTypeName name="javax.persistence.Table"/>
+    <fullyQualifiedTypeName name="com.rivet.dao.DAOServiceImpl"/>
+    <fullyQualifiedTypeName name="com.rivet.student.Student"/>
+    <fullyQualifiedTypeName name="java.lang.Iterable"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.Iterator"/>
+    <fullyQualifiedTypeName name="java.lang.Exception"/>
 </qualifiedTypeNameHistroy>

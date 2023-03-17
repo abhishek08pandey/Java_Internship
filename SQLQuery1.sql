@@ -80,3 +80,11 @@ truncate table servletuser;
 
 
 truncate table jspusers;
+
+
+select * from students;
+
+
+select * from tablestudent;
+
+select * from webmavenstudent;
