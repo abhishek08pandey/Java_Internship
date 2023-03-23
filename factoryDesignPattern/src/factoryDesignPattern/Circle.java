@@ -1,6 +1,5 @@
 package factoryDesignPattern;
 
-import singletonDesignPattern.SingleObject;
 
 public class Circle implements Shape {
 

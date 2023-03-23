@@ -34,7 +34,6 @@ public class Student {
 		this.name = name;
 	}
 	public Student() {
-		// without empty constructor can insert data
 	}
 	@Override
 	public String toString() {

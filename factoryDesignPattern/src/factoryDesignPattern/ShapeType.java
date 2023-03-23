@@ -2,7 +2,7 @@ package factoryDesignPattern;
 
 public class ShapeType {
 
-	public Shape getShape(String shaprType) {
+	public Shape setShape(String shaprType) {
 		
 		if(shaprType==null) {
 			return null;

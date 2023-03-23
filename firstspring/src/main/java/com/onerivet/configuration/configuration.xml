@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+        "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+        
+ <beans>
+ 	
+ 	<bean class="com.onerivet.student.Student" name="student">
+ 		<property name="id"><value>101</value></property>
+ 		<property name="name"><value>Rambo08</value></property>
+ 		<property name="email"><value>abhi@gmail.com</value></property>
+ 		<property name="password"><value>1223</value></property>
+ 		<property name="adress" ref="adress"></property>
+ 	</bean>
+ 
+ 	<bean class="com.onerivet.student.Adress" name="adress">
+ 		<property name="adress"><value>valsad</value></property>
+ 	</bean>
+ 
+ 
+ 
+ </beans>

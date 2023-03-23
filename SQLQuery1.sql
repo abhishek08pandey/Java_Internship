@@ -82,9 +82,10 @@ truncate table servletuser;
 truncate table jspusers;
 
 
-select * from students;
+select * from student;    (xml table)
 
 
-select * from tablestudent;
+select * from students;		(annotation table)
 
-select * from webmavenstudent;
+
+drop table students;
