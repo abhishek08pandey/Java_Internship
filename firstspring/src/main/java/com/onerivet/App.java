@@ -12,12 +12,25 @@ public class App {
 
 		ApplicationContext appContext = new ClassPathXmlApplicationContext(
 				"/com/onerivet/configuration/configuration.xml");
-
+// Setter method through
 		Student bean = appContext.getBean("student", Student.class);
-
-		System.out.println(bean.getId());
-		System.out.println(bean.getName() + " " + bean.getEmail() + " " + bean.getPassword() + " " + bean.getAdress());
-
-		//Rambo08 abhi@gmail.com 1223 Adress [adress=valsad]
+		try {
+			System.out.println("\n From Setter Methods: ");
+			System.out.println("Id: " + bean.getId());
+			System.out.println("Name: " + bean.getName() + "\nEmail:  " + bean.getEmail() + "\nPassword: "
+					+ bean.getPassword() + "\nAddress:  " + bean.getAdress());
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+// Constructor through		
+		Student conbean = appContext.getBean("constudent", Student.class);
+		try {
+			System.out.println("\n From Constructor: ");
+			System.out.println("Id: " + conbean.getId());
+			System.out.println("Name: " + conbean.getName() + "\nEmail:  " + conbean.getEmail() + "\nPassword: "
+					+ conbean.getPassword() + "\nAddress:  " + conbean.getAdress());
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
 	}
 }

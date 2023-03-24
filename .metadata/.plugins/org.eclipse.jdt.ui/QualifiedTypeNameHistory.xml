@@ -16,11 +16,9 @@
     <fullyQualifiedTypeName name="com.firstmaven.firstmaven.App"/>
     <fullyQualifiedTypeName name="com.firstmaven.entities.Student"/>
     <fullyQualifiedTypeName name="org.hibernate.annotations.Entity"/>
-    <fullyQualifiedTypeName name="javax.persistence.Entity"/>
     <fullyQualifiedTypeName name="javax.persistence.Id"/>
     <fullyQualifiedTypeName name="javax.persistence.GeneratedValue"/>
     <fullyQualifiedTypeName name="javax.persistence.GenerationType"/>
-    <fullyQualifiedTypeName name="javax.persistence.Table"/>
     <fullyQualifiedTypeName name="com.rivet.dao.DAOServiceImpl"/>
     <fullyQualifiedTypeName name="com.rivet.student.Student"/>
     <fullyQualifiedTypeName name="java.lang.Iterable"/>
@@ -38,4 +36,9 @@
     <fullyQualifiedTypeName name="org.springframework.context.support.ClassPathXmlApplicationContext"/>
     <fullyQualifiedTypeName name="com.onerivet.student.Student"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
+    <fullyQualifiedTypeName name="java.lang.Throwable"/>
+    <fullyQualifiedTypeName name="javax.persistence.Entity"/>
+    <fullyQualifiedTypeName name="javax.persistence.Table"/>
+    <fullyQualifiedTypeName name="javax.persistence.Column"/>
+    <fullyQualifiedTypeName name="com.rivet.student.Admin"/>
 </qualifiedTypeNameHistroy>

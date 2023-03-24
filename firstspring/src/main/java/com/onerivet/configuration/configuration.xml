@@ -2,21 +2,33 @@
 
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
         "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
-        
- <beans>
- 	
- 	<bean class="com.onerivet.student.Student" name="student">
- 		<property name="id"><value>101</value></property>
- 		<property name="name"><value>Rambo08</value></property>
- 		<property name="email"><value>abhi@gmail.com</value></property>
- 		<property name="password"><value>1223</value></property>
- 		<property name="adress" ref="adress"></property>
- 	</bean>
- 
- 	<bean class="com.onerivet.student.Adress" name="adress">
- 		<property name="adress"><value>valsad</value></property>
- 	</bean>
- 
- 
- 
- </beans>
+
+<beans>
+	<bean class="com.onerivet.student.Adress" name="cadress">
+		<constructor-arg value="12"/>
+		<constructor-arg value="onerivet"/>
+		<constructor-arg value="tithal, road"/>
+	</bean>
+	<bean class="com.onerivet.student.Student" name="constudent" autowire="constructor">
+		<constructor-arg value="102" type="int"></constructor-arg>
+		<constructor-arg value="rambo09"></constructor-arg>
+		<constructor-arg value="rambo@gmail.com"></constructor-arg>
+		<constructor-arg value="456"></constructor-arg>
+		<constructor-arg ref="cadress"/>
+	</bean>
+	
+	
+	<bean class="com.onerivet.student.Student" name="student">
+		<property name="id" value="101"/>
+		<property name="name" value="Rambo08"/>
+		<property name="email" value="Rambo@gmail.com"/>
+		<property name="password" value="123"/>
+		<property name="adress" ref="adress"/>
+	</bean>
+
+	<bean class="com.onerivet.student.Adress" name="adress" autowire="constructor">
+		<property name="flatNo" value="08"/>
+		<property name="landmark" value="market"/>
+		<property name="city" value="valsad"/>
+	</bean>
+</beans>

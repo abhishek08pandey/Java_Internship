@@ -39,4 +39,17 @@ public class Student {
 	public void setAdress(Adress adress) {
 		this.adress = adress;
 	}
+	public Student(int id, String name, String email, String password, Adress adress) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.adress = adress;
+	}
+	public Student() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
 }

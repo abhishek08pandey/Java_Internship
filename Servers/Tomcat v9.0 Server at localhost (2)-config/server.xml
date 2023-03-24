@@ -152,7 +152,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="webxmlservlet" path="/webxmlservlet" reloadable="true" source="org.eclipse.jst.jee.server:webxmlservlet"/><Context docBase="rivetbankwithjsp" path="/rivetbankwithjsp" reloadable="true" source="org.eclipse.jst.jee.server:rivetbankwithjsp"/><Context docBase="jspcrudproject" path="/jspcrudproject" reloadable="true" source="org.eclipse.jst.jee.server:jspcrudproject"/><Context docBase="xmlhbmcrud" path="/dynamicmaven" reloadable="true" source="org.eclipse.jst.jee.server:xmlhbmcrud"/></Host>
+      <Context docBase="webxmlservlet" path="/webxmlservlet" reloadable="true" source="org.eclipse.jst.jee.server:webxmlservlet"/><Context docBase="rivetbankwithjsp" path="/rivetbankwithjsp" reloadable="true" source="org.eclipse.jst.jee.server:rivetbankwithjsp"/><Context docBase="jspcrudproject" path="/jspcrudproject" reloadable="true" source="org.eclipse.jst.jee.server:jspcrudproject"/><Context docBase="xmlhbmcrud" path="/dynamicmaven" reloadable="true" source="org.eclipse.jst.jee.server:xmlhbmcrud"/><Context docBase="annotationcrud" path="/dynamicmaven" reloadable="true" source="org.eclipse.jst.jee.server:annotationcrud"/></Host>
     </Engine>
   </Service>
 </Server>

@@ -12,7 +12,7 @@
 	<%
 	Student student = (Student) request.getAttribute("idDetails");
 	%>
-	<form action="adduser?work=update" method="post">
+	<form action="crud?work=update" method="post">
 	<table border=1 width=10% height=10%>
 		<tr>
 			<th>Id</th>

@@ -11,7 +11,7 @@
 <title>Home</title>
 </head>
 <body>
-	<a href="adduser?name=createRecords&id=0">Add Student</a>
+	<a href="crud?name=createRecords&id=0">Add Student</a>
 	<h1>Welcome in Admin</h1>
 	
 	<table border=1 width=10% height=10%>
@@ -29,12 +29,12 @@
 		%>
 		
 		<tr>
-			<td><a href="adduser?name=getid&id=<%= student.getId() %>"><%=student.getId()%></a></td>
+			<td><a href="crud?name=getid&id=<%= student.getId() %>"><%=student.getId()%></a></td>
 			<td><%=student.getName()%></td>
 			<td><%=student.getEmail()%></td>
 			<td><%=student.getPassword()%></td>
-			<td><a href="adduser?name=update&id=<%= student.getId() %>">Update</a>
-			<td><a href="adduser?name=delete&id=<%= student.getId() %>">Delete</a>
+			<td><a href="crud?name=update&id=<%= student.getId() %>">Update</a>
+			<td><a href="crud?name=delete&id=<%= student.getId() %>">Delete</a>
 		</tr>
 		<%
 		}

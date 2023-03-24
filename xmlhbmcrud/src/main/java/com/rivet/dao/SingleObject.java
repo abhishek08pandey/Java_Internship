@@ -5,7 +5,7 @@ import org.hibernate.cfg.Configuration;
 
 public class SingleObject {
 
-	private static Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
+	private static Configuration configuration = new Configuration().configure("/com/rivet/configuration/hibernate.cfg.xml");
 	private static SessionFactory factory;
 	
 	private SingleObject() {
