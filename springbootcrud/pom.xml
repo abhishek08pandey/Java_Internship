@@ -31,6 +31,13 @@
 			<artifactId>tomcat-embed-jasper</artifactId>
 			<version>9.0.44</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.dagm/dev-tool -->
+		<dependency>
+			<groupId>com.dagm</groupId>
+			<artifactId>dev-tool</artifactId>
+			<version>0.0.16-BETA</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
