@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
-    <typeInfo handle="=designpattern/src&lt;adaptivedesignpattern{Interface1.java[Interface1" modifiers="513" timestamp="1680266221183"/>
-    <typeInfo handle="=designpattern/src&lt;adaptivedesignpattern{Interface2.java[Interface2" modifiers="513" timestamp="1680266236018"/>
+    <typeInfo handle="=springbootcrud/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.onerivet.springbootcrud.service{UserService.java[UserService" modifiers="513" timestamp="1680683592049"/>
+    <typeInfo handle="=jpacrud/C:\/Users\/abhishek.pandey\/.m2\/repository\/org\/springframework\/data\/spring-data-jpa\/3.0.4\/spring-data-jpa-3.0.4.jar=/maven.pomderived=/true=/=/maven.groupId=/org.springframework.data=/=/maven.artifactId=/spring-data-jpa=/=/maven.version=/3.0.4=/=/maven.scope=/compile=/=/maven.pomderived=/true=/&lt;org.springframework.data.jpa.repository(JpaRepository.class[JpaRepository" modifiers="1537" timestamp="1680677716809"/>
+    <typeInfo handle="=jpacrud/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.onerivet.service{EmployeeService.java[EmployeeService" modifiers="513" timestamp="1680786801311"/>
 </typeInfoHistroy>

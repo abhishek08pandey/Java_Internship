@@ -1,11 +1,13 @@
 package com.onerivet.springbootcrud.user;
 
+
 public class User {
 
 	private int id;
 	private String name;
 	private String email;
 	private String city;
+	
 	public int getId() {
 		return id;
 	}
@@ -36,6 +38,10 @@ public class User {
 		this.name = name;
 		this.email = email;
 		this.city = city;
+	}
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	
 	

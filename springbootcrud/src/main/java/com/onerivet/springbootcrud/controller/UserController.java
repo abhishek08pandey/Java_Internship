@@ -1,80 +1,64 @@
 package com.onerivet.springbootcrud.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.*;
+import java.util.Map.Entry;
+
+import com.onerivet.springbootcrud.service.UserService;
 import com.onerivet.springbootcrud.user.User;
+
+import jakarta.websocket.server.PathParam;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
 
-	private static List<User> list = new ArrayList<User>();
+// Perform DI
+	@Autowired
+	private UserService userService;
 
-	@GetMapping("/home")
-	public String homePage() {
-		return "Welcome in client side";
+// Create 
+	@PostMapping("/add/{idUser}")
+	public String addMap(@PathVariable Integer idUser, @RequestBody User user) {
+
+		return userService.addUser(idUser, user);
 	}
 
-//	@RequestMapping("/add")
-//	public String addUser() {
-//		list.add(new User(1, "abhi", "abhi@gmail.com", "valsad"));
-//		list.add(new User(2, "Jay Patel", "jay@gmail.com", "Vapi"));
-//
-//		Iterator<User> iterator = list.iterator();
-//		User user = iterator.next();
-//
-//		return "--->Add Successful:  " + user.getName() + "  details";
-//	}
-	
-	@PostMapping("/add")
-	public Object addUser(@RequestBody User user) {
-		
-		return list.add(user);
-	}
-
+//Read
 	@GetMapping("/get")
-	public List<User> getUser() {
-		return list;
+	public List<User> getMapUser() {
+
+		return userService.getRecords();
 	}
 
-	@GetMapping("/get/{id}")
-	public Object getUserById(@PathVariable int id) {
-
-		Iterator<User> iterator = list.iterator();
-
-		while (iterator.hasNext()) {
-			User user = (User) iterator.next();
-
-			if (user.getId() == id && user != null) {
-
-				return user;
-			}
-		}
-		return "not found";
-	}
-	
-	private static Map<Integer, User> mapUser = new HashMap<Integer, User>();
-	
-	@PostMapping("/addmapuser")
-	public String addMap(@PathVariable Integer id, @RequestBody User user) {
+// Read Single User
+	@GetMapping("/get/{idUser}")
+	public User getById(@PathVariable Integer idUser) {
 		
-		mapUser.put(id, user);
-		
-		return "add successful";
+		return userService.getSingleUser(idUser);
 	}
-	
-	@GetMapping("/getmapuser")
-	public Object getMapUser() {
-		
-	List<User> list2 = mapUser.values().stream().toList();
-		return list2;
-	}
-	
 
+// Update
+	@PutMapping("/update/{idUser}")
+	public String updateUser(@PathVariable Integer idUser, @RequestBody User user) {
+
+		return userService.updateUser(idUser, user);
+	}
+
+//Delete 
+	@DeleteMapping("/delete/{idUser}")
+	public String deleteUser(@PathVariable Integer idUser) {
+
+		return userService.deleteUser(idUser);
+	}
 }

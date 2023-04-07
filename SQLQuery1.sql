@@ -88,4 +88,7 @@ select * from student;    (xml table)
 select * from students;		(annotation table)
 
 
-drop table students;
+drop table employees;
+
+select * from employees;
+

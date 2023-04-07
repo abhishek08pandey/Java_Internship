@@ -6,6 +6,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+  //@Setter
+//@Getter
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@ToString
 @Entity
 @Table( name= "tablestudent")
 public class Student {

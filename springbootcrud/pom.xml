@@ -27,15 +27,17 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>mssql-jdbc</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
-			<version>9.0.44</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.dagm/dev-tool -->
 		<dependency>
-			<groupId>com.dagm</groupId>
-			<artifactId>dev-tool</artifactId>
-			<version>0.0.16-BETA</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
 
 	</dependencies>
