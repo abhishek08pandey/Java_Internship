@@ -40,30 +40,6 @@ END;
 
 execute customerlist;
 
-SELECT * FROM sys.procedures;
-
-CREATE PROCEDURE INSERTANDREAD
-AS
-BEGIN
-	INSERT INTO jdbc VALUES();
-	SELECT * FROM JDBC;
-END;
-
-
-(id in, name varchar2, city varchar2)
-IS
-
-
-create  procedure INSERTR  
-as
-begin  
-insert into user420 values(id,name);  
-end;  
-
-create table user420(id int, name varchar(200));  
-
-SELECT * FROM user420;
-
 create table servletuser(id int  PRIMARY KEY IDENTITY(1,1), name VARCHAR(48) not null,email VARCHAR(48) not null,city VARCHAR(48) , mobileNumber BIGINT);
 
 select * from servletuser;
@@ -88,7 +64,23 @@ select * from student;    (xml table)
 select * from students;		(annotation table)
 
 
-drop table employees;
+drop table employee_details, 
 
-select * from employees;
+drop table address, 
+
+
+use map;
+
+select * from employee;
+
+drop table address;
+
+
+select * from employee_details;
+
+select * from address;
+
+
+
+
 

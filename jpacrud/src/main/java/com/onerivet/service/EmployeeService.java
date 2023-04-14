@@ -8,17 +8,13 @@ import com.onerivet.exception.DataNotFoundException;
 
 public interface EmployeeService {
 	
-	public DtoEmployee employeeToDtoEmployee(Employee employee);
-	
-	public Employee dtoEmployeeToEmployee(DtoEmployee employee);
-
 	public String addEmployee(DtoEmployee dtoEmployee);
 	
 	public List<DtoEmployee> getAllRecords();
 	
 	public DtoEmployee getOneRecords(int id) throws DataNotFoundException;
 	
-	public String updateRecord(int id, DtoEmployee employee) throws DataNotFoundException;
+	public String updateRecord(DtoEmployee employee) throws DataNotFoundException;
 	
 	public String deleteById(int id) throws DataNotFoundException;
 	
@@ -30,9 +26,20 @@ public interface EmployeeService {
 	
 	public DtoEmployee getByEmail(String email);
 	
-	public List<DtoEmployee> getByMobileNumber(long mobileNumber);
+	public List<DtoEmployee> getByMobileNumber(String mobileNumber);
 	
 	public List<DtoEmployee> getByFirstAndLastName(String firstName, String lastName);
+	
+	public List<DtoEmployee> getByFirstNameAndCity(String firstName, String city);
 
+	public List<DtoEmployee> getAllDataAndStatusTrue(boolean status);
+	
+	public List<DtoEmployee> getByAge(int value1, int value2);
+	
+	public List<DtoEmployee> findByBiggerAge(int age);
+	
+	public List<DtoEmployee> findBySmallerAge(int age);
+	
+	public List<String>  findByCity(String city);
 	
 }

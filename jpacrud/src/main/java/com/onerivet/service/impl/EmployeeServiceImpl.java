@@ -1,15 +1,11 @@
 package com.onerivet.service.impl;
 
-import java.text.Collator;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collector;
+
 import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.onerivet.dtoentity.DtoEmployee;
@@ -23,36 +19,48 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Autowired
 	private EmployeeRepository employeeRepository;
+	
+	@Autowired
+	private ModelMapper modelMapper;
+
+	private List<DtoEmployee> collect;
 
 // get data from database	
-	@Override
-	public DtoEmployee employeeToDtoEmployee(Employee employee) {
+	private DtoEmployee employeeToDtoEmployee(Employee employee) {
 
-		DtoEmployee dtoEmployee = new DtoEmployee();
-
-		dtoEmployee.setId(employee.getId());
-		dtoEmployee.setFirstName(employee.getFirstName());
-		dtoEmployee.setLastName(employee.getLastName());
-		dtoEmployee.setCity(employee.getCity());
-		dtoEmployee.setEmail(employee.getEmail());
-		dtoEmployee.setPassword(employee.getPassword());
-		dtoEmployee.setMobileNumber(employee.getMobileNumber());
+		DtoEmployee dtoEmployee = modelMapper.map(employee, DtoEmployee.class);
+		
+//		DtoEmployee dtoEmployee new DtoEmployee();
+//		System.out.println("in employee: "+employee.isStatus());
+//		dtoEmployee.setId(employee.getId());
+//		dtoEmployee.setFirstName(employee.getFirstName());
+//		dtoEmployee.setLastName(employee.getLastName());
+//		dtoEmployee.setCity(employee.getCity());
+//		dtoEmployee.setEmail(employee.getEmail());
+//		dtoEmployee.setPassword(employee.getPassword());
+//		dtoEmployee.setMobileNumber(employee.getMobileNumber());
+//		dtoEmployee.setAge(employee.getAge());
+		dtoEmployee.setStatus(employee.isStatus());
 
 		return dtoEmployee;
 	}
 
 //get data from front end and json
-	@Override
-	public Employee dtoEmployeeToEmployee(DtoEmployee dtoEmployee) {
+	private Employee dtoEmployeeToEmployee(DtoEmployee dtoEmployee) {
 
-		Employee employee = new Employee();
-		employee.setId(dtoEmployee.getId());
-		employee.setFirstName(dtoEmployee.getFirstName());
-		employee.setLastName(dtoEmployee.getLastName());
-		employee.setCity(dtoEmployee.getCity());
-		employee.setEmail(dtoEmployee.getEmail());
-		employee.setPassword(dtoEmployee.getPassword());
-		employee.setMobileNumber(dtoEmployee.getMobileNumber());
+		Employee employee = modelMapper.map(dtoEmployee, Employee.class);
+		
+//		Employee employee = new Employee();
+//		System.out.println("in dto employee: "+dtoEmployee.isStatus());
+//		employee.setId(dtoEmployee.getId());
+//		employee.setFirstName(dtoEmployee.getFirstName());
+//		employee.setLastName(dtoEmployee.getLastName());
+//		employee.setCity(dtoEmployee.getCity());
+//		employee.setEmail(dtoEmployee.getEmail());
+//		employee.setPassword(dtoEmployee.getPassword());
+//		employee.setMobileNumber(dtoEmployee.getMobileNumber());
+//		employee.setAge(dtoEmployee.getAge());
+		employee.setStatus(dtoEmployee.isStatus());
 
 		return employee;
 	}
@@ -70,7 +78,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return "Employee Details not save";
 	}
 
-// Baki
 	@Override
 	public List<DtoEmployee> getAllRecords() {
 
@@ -78,10 +85,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public String updateRecord(int id, DtoEmployee dtoEmployee) throws DataNotFoundException {
-		DtoEmployee status = getOneRecords(id);
+	public String updateRecord(DtoEmployee dtoEmployee) throws DataNotFoundException {
+		DtoEmployee record = getOneRecords(dtoEmployee.getId());
 
-		if (status != null && id == dtoEmployee.getId()) {
+		if (record != null) {
 
 			employeeRepository.save(dtoEmployeeToEmployee(dtoEmployee));
 			return "Updated Successfully";
@@ -122,8 +129,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public List<DtoEmployee> getByfirstName(String firstName) {
-		return employeeRepository.getByfirstName(firstName).stream().map(x -> employeeToDtoEmployee(x))
-				.collect(Collectors.toList());
+		return employeeRepository.getByfirstNameAndStatusTrue(firstName).stream().map((fName)->employeeToDtoEmployee(fName)).collect(Collectors.toList());
 	}
 
 	@Override
@@ -135,6 +141,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public List<DtoEmployee> getByCity(String city){
 		return employeeRepository.getByCity(city).stream().map(employeeCity->employeeToDtoEmployee(employeeCity)).collect(Collectors.toList());
 	}
+	
 	@Override
 	public DtoEmployee getByEmail(String email) {
 
@@ -144,11 +151,48 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 	
 	@Override
-	public List<DtoEmployee> getByMobileNumber(long mobileNumber){
+	public List<DtoEmployee> getByMobileNumber(String mobileNumber){
 		return employeeRepository.getByMobileNumber(mobileNumber).stream().map(mobile->employeeToDtoEmployee(mobile)).collect(Collectors.toList());
+		//return employeeRepository.getByMobileNumber(mobileNumber).orElseThrow(()->new DataNotFoundException("Mobile Number not match with any records"));
+		 
 	}
 
 	public List<DtoEmployee> getByFirstAndLastName(String firstName, String lastName){
 		return employeeRepository.getByFirstNameAndLastName(firstName, lastName).stream().map(firstAndLastName->employeeToDtoEmployee(firstAndLastName)).collect(Collectors.toList());
+	}
+
+	@Override
+	public List<DtoEmployee> getByFirstNameAndCity(String firstName, String city) {
+		return employeeRepository.getByFirstNameAndCity(firstName, city).stream().map(firstNameAndCity->employeeToDtoEmployee(firstNameAndCity)).collect(Collectors.toList());
+	}
+
+	@Override
+	public List<DtoEmployee> getAllDataAndStatusTrue(boolean status) {
+		return employeeRepository.getAllDataAndStatusTrue(status).stream().map(findAllStatusTrue->employeeToDtoEmployee(findAllStatusTrue)).collect(Collectors.toList());
+	}
+
+//	@Override
+//	public List<DtoEmployee> getByAge(int value1, int value2) {
+//		
+//		return employeeRepository.getByAge(value1, value2).stream().map(cage->employeeToDtoEmployee(cage)).collect(Collectors.toList());
+//	}
+	
+	public List<DtoEmployee> getByAge(int value1,int value2){
+		 List<DtoEmployee> collect = this.employeeRepository.findByAgeBetween(value1,value2).stream().map(this:: employeeToDtoEmployee).collect(Collectors.toList());
+		 return collect;
+	}
+	
+	public List<DtoEmployee> findByBiggerAge(int age){
+		return employeeRepository.findByBiggerAge(age).stream().map(ages->employeeToDtoEmployee(ages)).collect(Collectors.toList());
+	}
+	
+	public List<DtoEmployee> findBySmallerAge(int age){
+		return employeeRepository.findBySmallerAge(age).stream().map(ages->employeeToDtoEmployee(ages)).collect(Collectors.toList());
+	}
+	
+	
+	public List<String>  findByCity(String city){
+		List<String> allRecords = employeeRepository.findByCity(city);
+		return allRecords;
 	}
 }

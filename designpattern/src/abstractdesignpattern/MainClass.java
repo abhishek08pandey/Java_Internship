@@ -15,7 +15,7 @@ public class MainClass {
 
 			Scanner scan = new Scanner(System.in);
 
-			System.out.println("\n**********\nPlease Order\n 1: Veg\n 2: NonVeg\n**********");
+			System.out.println("\n**********\nSelect Order\n Press 1: Veg\n Press 2: NonVeg\n**********");
 			int typeFood = scan.nextInt();
 
 			if (typeFood == 1) {
