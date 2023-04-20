@@ -1,11 +1,14 @@
 package com.onerivet.entitydto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+//@JsonIgnoreProperties(value = {"employeeDto"})
 public class AddressDto {
 
 	private long id;
@@ -16,5 +19,6 @@ public class AddressDto {
 	@NotEmpty(message = "Invalid State enter !")
 	private String state;
 	
-   // private Employee employee;
+	@JsonIgnore
+	private EmployeeDto employeeDto;
 }

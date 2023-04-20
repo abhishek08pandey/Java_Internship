@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
     <typeInfo handle="=springbootcrud/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.onerivet.springbootcrud.service{UserService.java[UserService" modifiers="513" timestamp="1680683592049"/>
-    <typeInfo handle="=jpacrud/C:\/Users\/abhishek.pandey\/.m2\/repository\/org\/springframework\/data\/spring-data-jpa\/3.0.4\/spring-data-jpa-3.0.4.jar=/maven.pomderived=/true=/=/maven.groupId=/org.springframework.data=/=/maven.artifactId=/spring-data-jpa=/=/maven.version=/3.0.4=/=/maven.scope=/compile=/=/maven.pomderived=/true=/&lt;org.springframework.data.jpa.repository(JpaRepository.class[JpaRepository" modifiers="1537" timestamp="1680677716809"/>
     <typeInfo handle="=jpacrud/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.onerivet.service{EmployeeService.java[EmployeeService" modifiers="513" timestamp="1681368796162"/>
     <typeInfo handle="=jpacrud/C:\/Users\/abhishek.pandey\/.p2\/pool\/plugins\/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.5.v20221102-0933\/jre\/lib\/jrt-fs.jar`java.base=/javadoc_location=/https:\/\/docs.oracle.com\/en\/java\/javase\/17\/docs\/api\/=/=/maven.pomderived=/true=/&lt;java.lang(Exception.class[Exception" modifiers="33" timestamp="1667406988000"/>
-    <typeInfo handle="=mapping121/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.onerivet.service{EmployeeService.java[EmployeeService" modifiers="513" timestamp="1681457881510"/>
+    <typeInfo handle="=mapping121/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.onerivet.service{EmployeeService.java[EmployeeService" modifiers="513" timestamp="1681734780319"/>
 </typeInfoHistroy>

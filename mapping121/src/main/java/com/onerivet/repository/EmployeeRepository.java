@@ -1,6 +1,7 @@
 package com.onerivet.repository;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -13,10 +14,10 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long>{
 	@Query(value="TRUNCATE TABLE employee_details", nativeQuery=true)
 	public String dropTable();
 	
-	//@Query("SELECT e FROM Employee e WHERE e.address=:state")
-	//@Query(value="SELECT * FROM employee_details e where e.name=name", nativeQuery = true) //for name correct
-	@Query(value="SELECT employee_details.name name, employee_details.mobile mobile, address.city city FROM employee_details  JOIN address ON employee_details.id=address.?", nativeQuery = true)
-	public List<Employee> findByInnerJoin(@Param ("id") int id);
+	//@Query(value="SELECT e.name name, e.mobile mobile, a.city city FROM employee_details e INNER JOIN address a ON e.id = a.employee_id  WHERE e.id=?", nativeQuery = true)// we get all records with List
+	@Query("SELECT e.name name, a.city city FROM Employee e JOIN e.address a WHERE e.id=:id")// we get single and latest record even used of List
+	public List<Map<String, String>> findByInnerJoin(@Param ("id") int id);
 	
-	//public List<Employee> findByState(String name);
+	@Query("SELECT e FROM Employee e INNER JOIN e.address a WHERE a.state=:state")
+	public List<Employee> findByState(@Param ("state") String state);
 }
