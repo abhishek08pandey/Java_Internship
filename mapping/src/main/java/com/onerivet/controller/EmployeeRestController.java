@@ -34,7 +34,7 @@ public class EmployeeRestController {
 	}
 	
 	@GetMapping("/get-by-id")
-	public EmployeeDto findById(@RequestParam Integer id){
+	public EmployeeDto findById(@RequestParam long id){
 		return employeeService.findById(id);
 	}
 	

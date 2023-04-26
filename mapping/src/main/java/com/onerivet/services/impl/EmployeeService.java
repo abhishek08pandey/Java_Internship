@@ -10,7 +10,7 @@ public interface EmployeeService {
 	
 	public List<EmployeeDto> findAll();
 	
-	public EmployeeDto findById(Integer id);
+	public EmployeeDto findById(long id);
 	
 	public List<EmployeeDto> findByFlateHouseno(int flateHouseNo);
 }

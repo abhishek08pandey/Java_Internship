@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.onerivet.entity.Employee;
 import com.onerivet.entitydto.EmployeeDto;
 import com.onerivet.exception.DataNotFoundException;
+import com.onerivet.exception.GlobalExceptionHandler;
 import com.onerivet.repository.EmployeeRepository;
 
 @Service
@@ -46,8 +47,11 @@ public class ServiceImpl implements EmployeeService{
 	}
 
 	@Override
-	public EmployeeDto findById(Integer id) {
-		return employeeToEmployeeDto(employeeRepository.findById(id));
+	public EmployeeDto findById(long id) {
+		//return employeeToEmployeeDto(employeeRepository.findById(id));
+	
+		//employeeRepository.findAll().
+		 return employeeToEmployeeDto(employeeRepository.findById(id).orElseThrow(()->new DataNotFoundException("User Does Not Found")));
 	}
 
 	@Override

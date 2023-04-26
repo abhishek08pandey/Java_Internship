@@ -14,4 +14,5 @@ public class NameDto {
 	private String middleName;
 	@NotEmpty(message = "lastName is mandatory")
 	private String lastName;
+	private EmployeeDto employeeDto;
 }

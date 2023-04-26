@@ -72,14 +72,16 @@ drop table address,
 use map;
 
 select * from employee;
+select * from fullname;
+select * from address;
 
 drop table employee_details;
 drop table address;
 
 
-select * from employee_details;
+select * from employee_detail;
 
-select * from address;
+select * from addresss;
 
 SELECT employee_details.name , employee_details.mobile, address.city  FROM employee_details  INNER JOIN address  ON employee_details.id = address.employee_id  WHERE employee_details.id=1
 

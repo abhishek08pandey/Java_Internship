@@ -34,7 +34,7 @@ public class FirstFilter implements Filter {
 
 		if (id1 >= 0 && id2 >= 0) {
 			
-			// try name varify
+			// try name verify
 			chain.doFilter(request, response);// it will call next servlet which is same as url
 		} else {
 			System.out.println("INVALID");

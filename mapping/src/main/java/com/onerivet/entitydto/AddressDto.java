@@ -16,4 +16,5 @@ public class AddressDto {
 	private String city;
 	@NotEmpty(message = "state is mandatory")
 	private String state;
+	private EmployeeDto employeeDto;
 }

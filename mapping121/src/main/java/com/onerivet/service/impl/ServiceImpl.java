@@ -1,5 +1,6 @@
 package com.onerivet.service.impl;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import com.onerivet.entity.Employee;
 import com.onerivet.entitydto.EmployeeDto;
+import com.onerivet.exceptionhandling.DataNotFoundException;
+import com.onerivet.exceptionhandling.classes.ApiException;
 import com.onerivet.repository.EmployeeRepository;
 import com.onerivet.service.EmployeeService;
 
@@ -60,13 +63,14 @@ public class ServiceImpl implements EmployeeService {
 
 	@Override
 	public EmployeeDto getById(long id) {
-		Employee employee = employeeRepository.findById(id).orElseThrow();
+		Employee employee = employeeRepository.findById(id).orElseThrow(()->new DataNotFoundException("User Not Found"));
 
 		return employeeToEmployeeDto(employee);
 	}
 
 	@Override
 	public String delete(long id) {
+		
 // 1st way use jsonIgnore for employee field in address class		
 		EmployeeDto oldEmployeeDto = getById(id);
 		Employee employee2 = employeeDtoToEmployee(oldEmployeeDto);
@@ -87,8 +91,6 @@ public class ServiceImpl implements EmployeeService {
 
 	@Override
 	public List<Map<String, String>> findByInnerJoin(int id) {
-		// TODO Auto-generated method stub
-		// return
 		// employeeRepository.findByInnerJoin(id).stream().map(list->employeeToEmployeeDto(list)).collect(Collectors.toList());
 		return employeeRepository.findByInnerJoin(id);
 	}

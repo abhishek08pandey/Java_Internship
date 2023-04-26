@@ -17,7 +17,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="address")
+@Table(name="addresss")
 public class Address {
 
 	@Id
@@ -28,7 +28,6 @@ public class Address {
 	private String state;
 	
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "address" )// Bidirectional 
-//	 @ManyToOne
 //	 @JoinColumn(name="address_id")
     private Employee employee;
 }

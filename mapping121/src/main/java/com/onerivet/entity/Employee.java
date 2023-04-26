@@ -18,7 +18,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="employee_details")
+@Table(name="employee_detail")
 public class Employee {
 
 	@Id
@@ -27,9 +27,9 @@ public class Employee {
 	private long id;
 	
 	private String name;
+	
 // , mappedBy = "employee" It is used when we don't need to address column in main entity
 	@OneToOne(cascade = CascadeType.ALL)
-	//@OneToMany(cascade = CascadeType.ALL)
 	private Address address;
 	
 	private String email;
